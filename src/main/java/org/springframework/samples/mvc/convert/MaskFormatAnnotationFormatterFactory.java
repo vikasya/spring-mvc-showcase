@@ -12,17 +12,17 @@ import org.springframework.format.Printer;
 
 public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatterFactory<MaskFormat> {
 
-	public Set<Class<?>> getFieldTypes() {
-		Set<Class<?>> fieldTypes = new HashSet<Class<?>>(1, 1);
+	public Set<Class> getFieldTypes() {
+		Set<Class<?>> fieldTypes = new HashSet<Class>(1, 1);
 		fieldTypes.add(String.class);
 		return fieldTypes;
 	}
 
-	public Parser<?> getParser(MaskFormat annotation, Class<?> fieldType) {
+	public Parser<?> getParser(MaskFormat annotation) {
 		return new MaskFormatter(annotation.value());
 	}
 
-	public Printer<?> getPrinter(MaskFormat annotation, Class<?> fieldType) {
+	public Printer<?> getPrinter(MaskFormat annotation) {
 		return new MaskFormatter(annotation.value());
 	}
 	
@@ -39,7 +39,7 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
-		public String print(String object, Locale locale) {
+		public String print(String object) {
 			try {
 				return delegate.valueToString(object);
 			} catch (ParseException e) {
@@ -47,7 +47,7 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
-		public String parse(String text, Locale locale) throws ParseException {
+		public String parse(String text) throws ParseException {
 			return (String) delegate.stringToValue(text);
 		}
 
