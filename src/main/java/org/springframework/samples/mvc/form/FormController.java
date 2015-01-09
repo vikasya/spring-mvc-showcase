@@ -35,6 +35,7 @@ public class FormController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public void form() {
+		// Do nothing just abstract use
 	}
 
 	@RequestMapping(method=RequestMethod.POST)

@@ -18,11 +18,11 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 		return fieldTypes;
 	}
 
-	public Parser<?> getParser(MaskFormat annotation, Class<?> fieldType) {
+	public Parser<?> getParser(MaskFormat annotation) {
 		return new MaskFormatter(annotation.value());
 	}
 
-	public Printer<?> getPrinter(MaskFormat annotation, Class<?> fieldType) {
+	public Printer<?> getPrinter(MaskFormat annotation) {
 		return new MaskFormatter(annotation.value());
 	}
 	
@@ -39,7 +39,7 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
-		public String print(String object, Locale locale) {
+		public String print(String object) {
 			try {
 				return delegate.valueToString(object);
 			} catch (ParseException e) {
@@ -47,10 +47,34 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
-		public String parse(String text, Locale locale) throws ParseException {
+		public String parse(String text) throws ParseException {
 			return (String) delegate.stringToValue(text);
 		}
 
+		@Override
+		public String print(String arg0, Locale arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public String parse(String arg0, Locale arg1) throws ParseException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+	}
+
+	@Override
+	public Parser<?> getParser(MaskFormat arg0, Class<?> arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Printer<?> getPrinter(MaskFormat arg0, Class<?> arg1) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
