@@ -39,7 +39,7 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
-		public String print(String object) {
+		public String print(String object, Locale locale) {
 			try {
 				return delegate.valueToString(object);
 			} catch (ParseException e) {
@@ -47,7 +47,7 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
-		public String parse(String text) throws ParseException {
+		public String parse(String text, Locale locale) throws ParseException {
 			return (String) delegate.stringToValue(text);
 		}
 

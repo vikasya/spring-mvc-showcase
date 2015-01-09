@@ -26,14 +26,14 @@ public class ViewsController {
 	}
 
 	@RequestMapping(value="pathVariables/{foo}/{fruit}", method=RequestMethod.GET)
-	public String pathVars(@PathVariable String foo, @PathVariable String fruit) {
+	public String pathVars() {
 		// No need to add @PathVariables "foo" and "fruit" to the model
 		// They will be merged in the model before rendering
 		return "views/html";
 	}
 
 	@RequestMapping(value="dataBinding/{foo}/{fruit}", method=RequestMethod.GET)
-	public String dataBinding(@Valid JavaBean javaBean, Model model) {
+	public String dataBinding() {
 		// JavaBean "foo" and "fruit" properties populated from URI variables 
 		return "views/dataBinding";
 	}
