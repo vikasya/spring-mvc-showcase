@@ -45,8 +45,7 @@ public class CallableController {
 				if (handled) {
 					// see handleException method further below
 					throw new IllegalStateException("Callable error");
-				}else
-				{
+				}else{
 					throw new IllegalArgumentException("Callable error");
 				}
 			}
