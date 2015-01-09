@@ -12,17 +12,17 @@ import org.springframework.format.Printer;
 
 public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatterFactory<MaskFormat> {
 
-	public Set<Class> getFieldTypes() {
-		Set<Class> fieldTypes = new HashSet<Class>(1, 1);
+	public Set<Class<?>> getFieldTypes() {
+		Set<Class<?>> fieldTypes = new HashSet<Class<?>>(1, 1);
 		fieldTypes.add(String.class);
 		return fieldTypes;
 	}
 
-	public Parser getParser(MaskFormat annotation, Class fieldType) {
+	public Parser<?> getParser(MaskFormat annotation, Class<?> fieldType) {
 		return new MaskFormatter(annotation.value());
 	}
 
-	public Printer getPrinter(MaskFormat annotation, Class fieldType) {
+	public Printer<?> getPrinter(MaskFormat annotation, Class<?> fieldType) {
 		return new MaskFormatter(annotation.value());
 	}
 	
